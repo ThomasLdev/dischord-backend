@@ -37,9 +37,11 @@ jobs:
             php.cache-to=type=gha,scope=php-${{github.ref}},mode=max
       -
         name: Start services
+        run: docker compose up --wait --no-build
+      - name: Debug containers
         run: |
-          docker compose up --wait --no-build
-          docker compose logs php
+          docker compose ps -a
+          docker compose logs
       -
         name: Check HTTP reachability
         run: curl -v --fail-with-body http://localhost
