@@ -36,6 +36,9 @@ jobs:
             php.cache-from=type=gha,scope=php-refs/heads/main
             php.cache-to=type=gha,scope=php-${{github.ref}},mode=max
       -
+        name: Check if metrics endpoint is reachable
+        run: docker compose exec php curl -v http://localhost:2019/metrics
+      -
         name: Start services
         run: docker compose up --wait --no-build
       -
