@@ -38,7 +38,7 @@ jobs:
       -
         name: Start services
         run: |
-          docker compose up --wait --no-build --no-cache
+          docker compose up --wait --no-build
           docker compose logs php
       -
         name: Check HTTP reachability
