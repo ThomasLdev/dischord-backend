@@ -32,6 +32,7 @@
     },
     "require-dev": {
         "api-platform/schema-generator": "^5.0",
+        "phpmd/phpmd": "^2.15",
         "phpstan/phpstan": "^2.1",
         "roave/security-advisories": "dev-latest",
         "symfony/browser-kit": "7.2.*",
