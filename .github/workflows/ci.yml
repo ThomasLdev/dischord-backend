@@ -42,7 +42,7 @@ jobs:
 #          docker compose ps -a
 #          docker compose logs
       - name: CS Fixer
-        run: make cs-fix
+        run: make csfixer
       - name: PHPStan
         run: make phpstan
       - name: PHPMD
