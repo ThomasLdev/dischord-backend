@@ -32,13 +32,21 @@ jobs:
             php.cache-from=type=gha,scope=php-${{github.ref}}
             php.cache-from=type=gha,scope=php-refs/heads/main
             php.cache-to=type=gha,scope=php-${{github.ref}},mode=max
+      - name: Setup make on the runner
+        run: sudo apt-get update && sudo apt-get install -y make
       - name: Start services
         run: docker compose up --wait --no-build
-      - name: Debug containers
-        if: always()
-        run: |
-          docker compose ps -a
-          docker compose logs
+#      - name: Debug containers
+#        if: always()
+#        run: |
+#          docker compose ps -a
+#          docker compose logs
+      - name: CS Fixer
+        run: make csfixer
+      - name: PHPStan
+        run: make phpstan
+      - name: PHPMD
+        run: make phpmd
       - name: Check HTTP reachability
         run: curl -v --fail-with-body http://localhost
       - name: Check API reachability
