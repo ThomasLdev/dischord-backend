@@ -46,7 +46,7 @@ phpstan:
 	@$(DOCKER_COMP) exec php vendor/bin/phpstan analyse --memory-limit=1G --configuration=phpstan.dist.neon
 
 phpmd:
-	@$(DOCKER_COMP) exec php vendor/bin/phpmd src ansi rulesets.xml --suffixes php --exclude vendor --strict --color
+	@$(DOCKER_COMP) exec php php -d error_reporting=E_ALL\&\~E_DEPRECATED vendor/bin/phpmd src,tests ansi rulesets.xml --suffixes php --strict --color
 
 csfixer:
 	@$(DOCKER_COMP) exec -e PHP_CS_FIXER_IGNORE_ENV=1 php vendor/bin/php-cs-fixer fix --allow-risky=yes --dry-run --verbose --config=.php-cs-fixer.dist.php
