@@ -1,28 +1,26 @@
 # Development environment override
 services:
   php:
+    restart: no
     build:
       context: ./api
       target: frankenphp_dev
     volumes:
       - ./api:/app
-      - /app/var
+      - /app/var/cache
+      - ./api/var/log:/app/var/log
       - ./api/frankenphp/Caddyfile:/etc/caddy/Caddyfile:ro
       - ./api/frankenphp/conf.d/app.dev.ini:/usr/local/etc/php/conf.d/app.dev.ini:ro
-      # If you develop on Mac or Windows you can remove the vendor/ directory
-      #  from the bind-mount for better performance by enabling the next line:
-      #- /app/vendor
     environment:
       MERCURE_EXTRA_DIRECTIVES: demo
-      # See https://xdebug.org/docs/all_settings#mode
       XDEBUG_MODE: "${XDEBUG_MODE:-debug,coverage}"
     extra_hosts:
-      # Ensure that host.docker.internal is correctly defined on Linux
       - host.docker.internal:host-gateway
     tty: true
 
 ###> doctrine/doctrine-bundle ###
   database:
+    restart: no
     ports:
       - target: 5432
         published: 5432
