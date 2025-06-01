@@ -10,6 +10,7 @@
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^3.0",
+        "lexik/jwt-authentication-bundle": "^3.1",
         "nelmio/cors-bundle": "^2.2",
         "phpstan/phpdoc-parser": "^2.0",
         "runtime/frankenphp-symfony": "^0.2",
@@ -32,17 +33,20 @@
     },
     "require-dev": {
         "api-platform/schema-generator": "^5.0",
+        "dama/doctrine-test-bundle": "^8.3",
+        "doctrine/doctrine-fixtures-bundle": "*",
         "phpmd/phpmd": "^2.15",
         "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^12.1",
         "roave/security-advisories": "dev-latest",
         "symfony/browser-kit": "7.2.*",
         "symfony/css-selector": "7.2.*",
         "symfony/debug-bundle": "7.2.*",
         "symfony/maker-bundle": "^1.44",
-        "symfony/phpunit-bridge": "7.2.*",
         "symfony/stopwatch": "7.2.*",
         "symfony/var-dumper": "7.2.*",
-        "symfony/web-profiler-bundle": "7.2.*"
+        "symfony/web-profiler-bundle": "7.2.*",
+        "zenstruck/foundry": "*"
     },
     "config": {
         "optimize-autoloader": true,
